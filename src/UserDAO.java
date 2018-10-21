@@ -9,10 +9,9 @@ public class UserDAO {
         conn = new dbConnection();
     }
 
-    public ResultSet searchByID(String CustomerID)
+    public ResultSet searchByID(String Country)
     {
-        String query = "select * from Customers where CustomerID ='"+CustomerID+"'";
-
+        String query = "select * from Customers where Country ='"+Country+"'";
         return conn.executeSelectQuery(query);
     }
 

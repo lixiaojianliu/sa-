@@ -27,22 +27,22 @@ public class Presentation extends JFrame implements ActionListener{
 
     private UserBUS _userBUS;
 
-    private JFrame frame = new JFrame("查询");
+    private JFrame frame = new JFrame("示例程序");
     private Container c = frame.getContentPane();
     private JTextField input = new JTextField();
     JLabel a1 = new JLabel("输入信息:");
-    private JButton ID = new JButton("以客户ID查询");
-    private JButton Name = new JButton("以客户公司名查询");
+    private JButton ID = new JButton("查询客户所在国家");
+    private JButton Name = new JButton("查询客户公司名称");
     private JButton Bar=new JButton("统计客户所在国家");
     private JButton Pie=new JButton("统计货主所在国家");
     private JButton line=new JButton("产品库存与订购量");
 
-    private String CustomerID;//客户ID
+    private String CountryName;
     private String CompanyName;//客户公司名
     public Presentation()
     {
         _userBUS = new UserBUS();
-        frame.setSize(300,300);
+        frame.setSize(400,300);
 
         c.setLayout(new BorderLayout());
         frame.setLocationRelativeTo(null);
@@ -50,7 +50,7 @@ public class Presentation extends JFrame implements ActionListener{
 
         JPanel titlePanel = new JPanel();
         titlePanel.setLayout(new FlowLayout());
-        titlePanel.add(new JLabel("查询"));
+        titlePanel.add(new JLabel(" "));
         c.add(titlePanel,"North");
 
         JPanel fieldPanel = new JPanel();
@@ -111,11 +111,11 @@ public class Presentation extends JFrame implements ActionListener{
             frame.setVisible(true);
         }
 
-        else if(e.getActionCommand()=="以客户ID查询")
+        else if(e.getActionCommand()=="查询客户所在国家")
         {
-            CustomerID=input.getText();
-            System.out.println(CustomerID);
-            Vector<UserVO> rs=_userBUS.getUserByID(CustomerID);
+            CountryName=input.getText();
+            System.out.println(CountryName);
+            Vector<UserVO> rs=_userBUS.getUserByID(CountryName);
             if(rs.size()==0)
             {
                 JOptionPane.showMessageDialog(null, "No Match Found!", "消息", JOptionPane.INFORMATION_MESSAGE);
